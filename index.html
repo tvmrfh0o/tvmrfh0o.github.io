@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="ja" data-theme="auto">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>（氏名）– 宇宙物理（理論） / M1</title>
+  <meta name="description" content="宇宙物理の理論研究者（修士1年）の個人ページ．ブラックホール降着円盤，放射MHD，機械学習×天体物理．" />
+  <style>
+    /* ===== 基本レイアウトとテーマ ===== */
+    :root {
+      --bg: #ffffff;
+      --fg: #101418;
+      --muted: #5b6470;
+      --card: #f6f8fa;
+      --accent: #2d6cdf;
+      --border: #e5e7eb;
+      --shadow: 0 6px 24px rgba(2, 6, 23, .06);
+      color-scheme: light dark;
+    }
+    html[data-theme="dark"] {
+      --bg: #0b0f14;
+      --fg: #eef2f7;
+      --muted: #9aa4af;
+      --card: #121821;
+      --accent: #6aa8ff;
+      --border: #293241;
+      --shadow: 0 6px 24px rgba(0,0,0,.45);
+    }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", "Noto Sans JP", sans-serif;
+      background: var(--bg); color: var(--fg);
+      line-height: 1.65; letter-spacing: .02em;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow); }
+
+    /* ===== ヘッダー／ナビ ===== */
+    header.site-header { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(180%) blur(8px); background: color-mix(in oklab, var(--bg) 85%, transparent); border-bottom: 1px solid var(--border); }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; }
+    .brand .avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #8ec5fc, #e0c3fc); border: 1px solid var(--border); }
+    nav a { padding: 8px 10px; border-radius: 10px; }
+    nav a:hover { background: color-mix(in oklab, var(--card) 65%, transparent); text-decoration: none; }
+    .toolbar { display: flex; gap: 8px; align-items: center; }
+    .btn { border: 1px solid var(--border); background: var(--bg); color: var(--fg); border-radius: 12px; padding: 8px 12px; cursor: pointer; font: inherit; }
+    .btn:hover { background: color-mix(in oklab, var(--card) 70%, transparent); }
+
+    /* ===== ヒーロー ===== */
+    .hero { display: grid; grid-template-columns: 120px 1fr; gap: 20px; padding: 28px 0 12px; align-items: center; }
+    .hero .photo { width: 120px; height: 120px; border-radius: 20px; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); border: 1px solid var(--border); }
+    .hero h1 { margin: 0; font-size: clamp(24px, 3vw, 34px); letter-spacing: .01em; }
+    .hero p.tagline { margin: 6px 0 0; color: var(--muted); }
+    .meta { display: flex; flex-wrap: wrap; gap: 10px 14px; margin-top: 12px; font-size: 14px; color: var(--muted); }
+
+    /* ===== セクション ===== */
+    section { padding: 28px 0; }
+    section h2 { font-size: 20px; margin: 0 0 12px; }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    .item { padding: 16px; }
+    .kicker { color: var(--muted); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+
+    /* ===== リスト ===== */
+    .pubs { padding-left: 20px; }
+    .pubs li { margin: 10px 0; }
+
+    /* ===== フッター／その他 ===== */
+    footer { padding: 28px 0 40px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--border); margin-top: 20px; }
+    .pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; background: var(--card); border: 1px solid var(--border); font-size: 13px; }
+    .icons { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .two { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    @media (min-width: 820px) {
+      .two { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ===== 印刷（PDF化向け） ===== */
+    @media print {
+      header, .toolbar, #backToTop { display: none !important; }
+      .card { box-shadow: none; }
+      a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 10px; color: var(--muted); }
+    }
+
+    /* ===== 浮遊ボタン ===== */
+    #backToTop { position: fixed; right: 16px; bottom: 16px; display: none; }
+  </style>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ===== ヘッダー ===== -->
+  <header class="site-header">
+    <div class="wrap nav">
+      <div class="brand">
+        <div class="avatar" aria-hidden="true"></div>
+        <span>（氏名）</span>
+      </div>
+      <nav aria-label="主要ナビゲーション">
+        <a href="#research">研究</a>
+        <a href="#publications">成果</a>
+        <a href="#talks">発表</a>
+        <a href="#teaching">教育</a>
+        <a href="#contact">連絡</a>
+      </nav>
+      <div class="toolbar">
+        <button id="theme-toggle" class="btn" aria-label="テーマ切替">🌓</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- ===== ヒーロー ===== -->
+    <section class="hero">
+      <div class="photo" role="img" aria-label="プロフィール画像のプレースホルダ"></div>
+      <div>
+        <h1>（氏名 / Name Surname）</h1>
+        <p class="tagline">宇宙物理の理論研究者（修士1年）｜ブラックホール降着円盤，放射MHD，機械学習×天体物理</p>
+        <div class="meta">
+          <span class="pill">所属：<span>（大学・研究科・専攻）</span></span>
+          <span class="pill">指導教員：<span>（教員名）</span></span>
+          <span class="pill">居室：<span>（キャンパス・棟・部屋）</span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 研究分野 ===== -->
+    <section id="research">
+      <h2>研究</h2>
+      <div class="grid">
+        <article class="card item">
+          <div class="kicker">Interests</div>
+          <p>数値シミュレーションから得られるスペクトルや流体場を用い，ブラックホールの質量，質量降着率，スピン，見込み角などの推定を行う．一般相対論（GR）と輻射輸送の効果を考慮した理論・数値の両面から研究している．</p>
+          <ul>
+            <li>降着円盤のスペクトルエネルギー分布（SED）解析とパラメータ推定</li>
+            <li>GR（一般相対論）/ 輻射MHDを含む数値計算のモデル化</li>
+            <li>機械学習（回帰・特徴量重要度）による物理量の同定</li>
+          </ul>
+        </article>
+        <article class="card item">
+          <div class="kicker">Projects</div>
+          <ul>
+            <li><strong>SED→物理量推定：</strong>シミュレーション由来のSEDから，ブラックホール質量・降着率・スピン・見込み角を回帰する軽量モデルの開発．</li>
+            <li><strong>輻射テンソル推定：</strong>ガス圧・密度・速度・輻射エネルギー・フラックスからエディントンテンソルを推定する学習器の設計．</li>
+            <li><strong>理論整合性の検証：</strong>GRMHDの保存則やスケーリング則に基づく物理制約を学習に組み込む．</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== 論文・成果 ===== -->
+    <section id="publications">
+      <h2>成果</h2>
+      <div class="two">
+        <article class="card item">
+          <div class="kicker">Preprints / Manuscripts</div>
+          <ol class="pubs">
+            <li>（氏名）, ほか, <em>Machine-learning inference of BH parameters from simulated SEDs</em>, arXiv:xxxx.xxxxx, 2025．<a href="#">arXiv</a></li>
+            <li>（氏名）, <em>Learning Eddington tensors from RMHD snapshots</em>, in prep．</li>
+          </ol>
+        </article>
+        <article class="card item">
+          <div class="kicker">Selected Publications</div>
+          <ol class="pubs">
+            <li>（著者名）, <em>Paper title</em>, Journal, Vol(xx), pp–pp, Year．<a href="#">DOI</a></li>
+            <li>（著者名）, <em>Paper title</em>, Journal, Vol(xx), pp–pp, Year．<a href="#">DOI</a></li>
+          </ol>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== 学会発表／ポスター ===== -->
+    <section id="talks">
+      <h2>学会発表・ポスター</h2>
+      <div class="grid">
+        <article class="card item">
+          <ul class="pubs">
+            <li>（氏名）, 「機械学習による輻射スペクトルからのブラックホール物理量の推定」, 学会名, 口頭/ポスター, 都市, 2025．<a href="#">スライド</a>／<a href="#">ポスター</a></li>
+            <li>（氏名）, 「GRMHD＋放射輸送の簡易モデル化」, 研究会名, 2024．</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== 教育／アウトリーチ ===== -->
+    <section id="teaching">
+      <h2>教育・アウトリーチ</h2>
+      <div class="two">
+        <article class="card item">
+          <div class="kicker">Teaching Assistant</div>
+          <ul>
+            <li>（科目名） 力学I／II（年度：2025），演習・採点補助．</li>
+            <li>（科目名） 計算物理（年度：2024），Python演習．</li>
+          </ul>
+        </article>
+        <article class="card item">
+          <div class="kicker">Outreach</div>
+          <ul>
+            <li>高校向け出前授業：ブラックホールの物理（2024）．</li>
+            <li>研究室公開での展示：降着円盤シミュレーション可視化（2025）．</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== 連絡先 ===== -->
+    <section id="contact">
+      <h2>連絡先・リンク</h2>
+      <div class="grid">
+        <article class="card item">
+          <p>メール：<a id="email" href="#" data-local="your.name" data-domain="univ.example.jp"></a>
+            <button id="copy-email" class="btn" aria-label="メールアドレスをコピー">コピー</button></p>
+          <div class="icons">
+            <a class="pill" href="#" title="Google Scholar" aria-label="Google Scholar">📚 Scholar</a>
+            <a class="pill" href="#" title="arXiv" aria-label="arXiv">🧪 arXiv</a>
+            <a class="pill" href="#" title="ORCID" aria-label="ORCID">🟢 ORCID</a>
+            <a class="pill" href="#" title="GitHub" aria-label="GitHub">🐙 GitHub</a>
+            <a class="pill" href="cv.pdf" title="CV（PDF）" aria-label="CV（PDF）">📄 CV</a>
+          </div>
+          <p style="margin-top:12px; color: var(--muted); font-size: 14px;">※ <code>cv.pdf</code> をこのHTMLと同じフォルダに置くとリンクが有効になる．</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>© <span id="year"></span> （氏名）．最終更新：<span id="lastmod"></span></div>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="btn" aria-label="ページ上部へ戻る">↑ 上へ</button>
+
+  <!-- ===== 構造化データ（必要に応じて編集） ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "（氏名 / Name Surname）",
+    "jobTitle": "Graduate Student (M1), Theoretical Astrophysics",
+    "affiliation": {"@type": "Organization", "name": "（大学名）」},
+    "url": "",
+    "email": "mailto:your.name@univ.example.jp",
+    "knowsAbout": ["black holes", "accretion disks", "GRMHD", "radiation MHD", "machine learning"],
+    "sameAs": ["", "", ""]
+  }
+  </script>
+
+  <!-- ===== ふるまい ===== -->
+  <script>
+    // --- テーマ切替（ローカルに保存） ---
+    const htmlEl = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    function applyTheme(mode){
+      const t = mode === 'auto' ? (prefersDark ? 'dark' : 'light') : mode;
+      htmlEl.setAttribute('data-theme', t);
+    }
+    applyTheme(savedTheme || 'auto');
+    document.getElementById('theme-toggle').addEventListener('click', ()=>{
+      const current = htmlEl.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', next);
+      applyTheme(next);
+    });
+
+    // --- メールのスパム対策（JSで連結） ---
+    const emailEl = document.getElementById('email');
+    const local = emailEl.dataset.local;
+    const domain = emailEl.dataset.domain;
+    const email = `${local}@${domain}`;
+    emailEl.textContent = email;
+    emailEl.href = `mailto:${email}`;
+    document.getElementById('copy-email').addEventListener('click', async ()=>{
+      try { await navigator.clipboard.writeText(email); alert('メールアドレスをコピーした．'); } catch(e) {}
+    });
+
+    // --- フッター情報 ---
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('lastmod').textContent = new Date(document.lastModified).toLocaleDateString('ja-JP');
+
+    // --- 上へ戻るボタン ---
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => { backBtn.style.display = window.scrollY > 400 ? 'block' : 'none'; });
+    backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+
+  <!-- ===== 使い方メモ（公開時は削除可） ===== -->
+  <!--
+    ◎ 置換ポイント
+      - （氏名 / Name Surname）をあなたの氏名に置き換える．
+      - 所属・指導教員・居室などを更新する．
+      - Publications／Preprints を実績に差し替える．
+      - 連絡先メールは data-local / data-domain を編集（スパムボット対策）．
+      - cv.pdf を同じフォルダに置けば CV リンクが有効．
+    ◎ デプロイ
+      - この HTML をそのまま GitHub Pages／大学の個人ページ領域にアップロードすれば公開できる．
+  -->
+</body>
+</html>
